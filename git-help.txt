@@ -1,0 +1,17 @@
+git config --global user.name "alireza"
+git config --global user.email ali64iust@gmail.com
+
+
+
+git clone https://github.com/ali64iust/dockertest.git
+cd dockertest
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/ali64iust/dockertest.git
+git remote -v
+git push origin master
+
+
+setting == developer setting == access token
+
+

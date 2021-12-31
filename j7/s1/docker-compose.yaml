@@ -1,0 +1,48 @@
+version: "3.7"
+services:
+ web:
+  image: nginx
+  restart: always
+  ports:
+   - 80:80
+  volumes:
+   - web_content:/usr/share/nginx/html
+   - web_config:/etc/nginx/conf.d/
+  container_name: nginx1
+  networks:
+   - nginx_php
+
+ php: 
+  image: php:7.4.0-fpm-alpine
+  container_name: php-fpm
+  restart: always
+  volumes:
+   - web_content:/usr/share/nginx/html
+  networks:
+   - nginx_php
+   - php_db   
+
+ db:
+  image: mysql
+  restart: always
+  volumes:
+   - db_content:/var/lib/mysql
+  networks:
+   - php_db
+  environment:
+      MYSQL_ROOT_PASSWORD: example
+
+volumes:
+ web_content:
+  external: true
+ web_config:
+  external: true
+ db_content:
+  external: true
+
+networks:
+ php_db:
+  external: true
+ nginx_php:
+  external: true
+
