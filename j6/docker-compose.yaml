@@ -1,0 +1,23 @@
+version: 3.7
+services:
+ datapuller:
+  container_name: datapuller
+  build: ./build
+  image: datapuller:v1
+
+ web:
+  image: nginx
+  ports:
+   -8080:80
+  volumes:
+   - volNginx:/usr/share/nginx/html:ro
+
+
+ app1:
+  image: datapuller:v1
+  volumes: 
+   - volNginx:/result 
+
+ volumes:
+  volNginx:
+   external: true
