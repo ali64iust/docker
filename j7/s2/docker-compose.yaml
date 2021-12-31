@@ -4,11 +4,12 @@ services:
   build: ./example-voting-app/vote
   image: voting-app
   ports: 
-   - 5000:80
-  container_name: myvoting
+   - 80
+
   networks:
    - net1
-
+  deploy:
+   replicas: 3
 
  redis:
   image: redis
@@ -38,9 +39,11 @@ services:
   image: result
   build: ./example-voting-app/result
   ports: 
-   - 5001:80
+   - 80
   networks:
    - net2
+  deploy:
+   replicas: 3
 
 volumes:
  worker_volu:
