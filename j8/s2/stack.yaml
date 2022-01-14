@@ -1,0 +1,16 @@
+version: "3.8"
+services: 
+ whoami:
+  image: training/whoami:latest
+  networks:
+   - mynet
+  ports:
+   - 81:8000
+  deploy:
+   replicas: 5
+  labels:
+   myapp: v1
+
+networks:
+ mynet:
+  driver: overlay
