@@ -14,4 +14,4 @@ git push origin master
 
 setting == developer setting == access token
 
-p_YdLsgYlvUmfBBikOrtUGW9eKxMSlTG2pCttr
+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
