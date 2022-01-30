@@ -1,0 +1,63 @@
+#after build image run with this command
+#docker stack deploy -c stack.yaml mystack
+#docker stack service mystack ==> for get information about stack
+
+version: "3.7"
+services:
+ voting-app:  
+  image: voting-app
+  ports: 
+   - 80
+
+  networks:
+   - net1
+  deploy:
+   replicas: 3
+
+ redis:
+  image: redis
+  container_name: redis
+  networks:
+   - net1
+   - net3
+ worker:
+  image: worker
+  volumes:
+   - worker_volu:/var/lib/postgresql/data
+  networks:
+   - net3
+
+ db:
+  image: postgres
+  container_name: db
+  environment:
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_USER: "postgres"
+  networks:
+   - net3
+   - net2
+
+ result-app:
+  image: result
+  build: ./example-voting-app/result
+  ports: 
+   - 80
+  networks:
+   - net2
+  deploy:
+   replicas: 3
+
+volumes:
+ worker_volu:
+  external: true
+
+networks:
+ net1:
+  driver: overlay
+ net2:
+  driver: overlay
+ net3:
+  driver: overlay
+
+
+
