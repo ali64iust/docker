@@ -1,4 +1,8 @@
-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
+bash completion {
+https://kubernetes.io/docs/tasks/tools/included/optional-kubectl-configs-bash-linux/
+open new bash
+bash
+}
 https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/
 https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
 
