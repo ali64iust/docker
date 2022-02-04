@@ -1,0 +1,14 @@
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+
+https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/
+
+
+cgroup docker ba juber bayad yeki shavad
+docker info ==   Cgroup Driver: systemd
+systemctl status docker
+vi /usr/lib/systemd/system/docker.service
+ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --exec-opt native.cgroupdriver=systemd
+systemctl deamon-reload
+systemctl restart docker
+docker info == cgroup bayad systemd shode bashad
+Cgroup Driver: systemd
