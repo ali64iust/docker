@@ -1,0 +1,31 @@
+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
+https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-init/
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+
+to hame bayad:
+{
+hostname ha set shavad
+file /etc/hosts ==> magadir set shavad
+swapoff -a   ===> to hame ejra shavad
+/etc/fstab   ===> khat swapp comment shavad
+}
+
+
+kubeadm init --apiserver-advertise-address=192.168.21.104 --pod-network-cir=10.104.0.0/12
+{
+ye seri dastor amal gofte ke bayad ejra konim
+}
+
+google search: calico install kyber
+curl https://projectcalico.docs.tigera.io/manifests/calico-typha.yaml -o calico.yaml
+kubectl apply -f calico.yaml
+
+chaneg: CALICO_IPV4POOL_CIDR  ==> 10.104.0.0/12
+
+kubectl apply -f calico.yaml
+
+kubeadm join 192.168.21.104:6443 --token k3mnpr.pioobee0j18ji6bg \
+        --discovery-token-ca-cert-hash sha256:5b3c7919f47a6a00361d18a1cefc73f3340e8fd9b0f058d82a3f3bd6d98c4cf2
+
+
+
